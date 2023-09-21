@@ -3,7 +3,7 @@ import { AuthService } from '@/services/auth/auth.service'
 import axios from 'axios'
 import { errorCatch, getContentType } from './api.helper'
 
-const instance = axios.create({
+export const instance = axios.create({
 	baseURL: process.env.SERVER_URL,
 	headers: getContentType()
 })
@@ -42,3 +42,4 @@ instance.interceptors.response.use(
         throw error
 	}
 )
+
