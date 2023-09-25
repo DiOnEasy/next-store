@@ -6,10 +6,10 @@ const colors = {
 	transparent: twColors.transparent,
 	black: '#2e3239',
 	white: twColors.white,
-  secondary: '#161D25',
-  primary: '#ff9902',
-  'bg-color': '#f2f2f5',
-  aqua: '#268697'
+	secondary: '#161D25',
+	primary: '#ff9902',
+	'bg-color': '#f2f2f5',
+	aqua: '#268697'
 }
 
 const config: Config = {

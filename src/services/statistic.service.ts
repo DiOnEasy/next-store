@@ -1,25 +1,19 @@
 import { instance } from '@/api/api.interceptor'
 import { IReview } from '@/types/review.interface'
 
-const REVIEWS = 'reviews'
+const STATISTIC = 'statistic'
 
-type TypeData = {
-	rating: number
-	text: string
+export type TypeStatisticResponse = {
+	name: string
+	value: number
 }
 
 export const StatisticService = {
-	async getAll() {
-		return instance<IReview[]>({
-			url: REVIEWS,
+	async getMain() {
+		return instance<TypeStatisticResponse>({
+			url: STATISTIC,
 			method: 'GET'
 		})
-	},
-
-	async leave(productId: string | number, data: TypeData) {
-		return instance<IReview>({
-			url: `${REVIEWS}/leave/${productId}`,
-			method: 'POST'
-		})
 	}
+
 }
