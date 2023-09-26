@@ -9,6 +9,7 @@ class UserStore {
 	constructor() {
 		makeAutoObservable(this)
 	}
+	
 
 	register = async (data: IEmailPassword) => {
 		try {
@@ -47,4 +48,4 @@ class UserStore {
 		}
 	}
 }
-export default UserStore
+export default new UserStore()
