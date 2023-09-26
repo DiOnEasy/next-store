@@ -1,48 +1,55 @@
+import { getLocalStorage } from '@/utils/local-storage'
 import { makeAutoObservable } from 'mobx'
-import { checkAuthAction, loginAction, logoutAction, registerAction } from './user.actions'
+import {
+	checkAuthAction,
+	loginAction,
+	logoutAction,
+	registerAction
+} from './user.actions'
 import { IEmailPassword, IInitialState } from './user.interface'
 
 class UserStore {
-	user: IInitialState = localStorage.getItem('user')
-		? JSON.parse(localStorage.getItem('user') as string)
-		: null
+	initialState: IInitialState = {
+		user: getLocalStorage('user'),
+		isLoading: false
+	}
+
 	constructor() {
 		makeAutoObservable(this)
 	}
-	
 
 	register = async (data: IEmailPassword) => {
 		try {
-			this.user.isLoading = true
+			this.initialState.isLoading = true
 			const response = await registerAction(data)
-			this.user.user = response.user
-			this.user.isLoading = false
+			this.initialState.user = response.user
+			this.initialState.isLoading = false
 		} catch (err) {
 			throw err
 		}
 	}
 
-    login = async (data: IEmailPassword) => {
+	login = async (data: IEmailPassword) => {
 		try {
-			this.user.isLoading = true
+			this.initialState.isLoading = true
 			const response = await loginAction(data)
-			this.user.user = response.user
-			this.user.isLoading = false
+			this.initialState.user = response.user
+			this.initialState.isLoading = false
 		} catch (err) {
 			throw err
 		}
 	}
 
-    logout = () =>{
-        logoutAction()
-    }
+	logout = () => {
+		logoutAction()
+	}
 
-    checkAuth = async () => {
+	checkAuth = async () => {
 		try {
-			this.user.isLoading = true
+			this.initialState.isLoading = true
 			const response = await checkAuthAction()
-			this.user.user = response.user
-			this.user.isLoading = false
+			this.initialState.user = response.user
+			this.initialState.isLoading = false
 		} catch (err) {
 			throw err
 		}

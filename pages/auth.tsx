@@ -1,4 +1,4 @@
-import Auth from '@/components/layouts/Auth'
+import Auth from '@/components/layouts/auth/Auth'
 import { NextPage } from 'next'
 
 const AuthPage: NextPage = () => {
