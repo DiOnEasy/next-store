@@ -1,7 +1,8 @@
+import Home from '@/components/layouts/home/Home'
 import { NextPage } from 'next'
 
 const HomePage: NextPage = () => {
-	return <>Home page</>
+	return <Home/>
 }
 
 export default HomePage

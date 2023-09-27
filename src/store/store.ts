@@ -1,7 +1,10 @@
-import UserStore from "./user/user.store";
+import cartStore from "./cart/cart.store"
+import userStore from "./user/user.store"
 
 class RootStore {
-    userStore = UserStore
+    userStore = userStore
+    cartStore = cartStore
+
 }
 
 export default RootStore

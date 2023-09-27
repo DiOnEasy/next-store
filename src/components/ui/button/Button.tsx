@@ -14,7 +14,7 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 }) => {
 	return (
 		<button {...rest} className={cn('rounded-xl font-medium shadow px-6 py-2', {
-            'text-seconday bg-primary': variant === 'orange',
+            'text-black bg-primary': variant === 'orange',
             'text-primary bg-white' : variant === 'white'
         }, className)}>
 			{children}
