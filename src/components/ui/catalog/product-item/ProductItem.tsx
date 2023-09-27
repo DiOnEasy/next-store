@@ -4,6 +4,7 @@ import { FC } from "react";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
 import FavoriteButton from "./FavoriteButton";
+import ProductRating from "./ProductRating";
 
 const ProductItem: FC<{product:IProduct}> = ({product}) =>{
     return(
@@ -15,7 +16,7 @@ const ProductItem: FC<{product:IProduct}> = ({product}) =>{
         </div>
         <p>{product.name}</p>
         <p>{product.category.name}</p>
-        <ProductRating rating={product.rating} />
+        <ProductRating product={product} />
         <p>{product.price}</p>
         </>
     )

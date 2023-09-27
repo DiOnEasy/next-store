@@ -21,5 +21,11 @@ export const ReviewService = {
 			url: `${REVIEWS}/leave/${productId}`,
 			method: 'POST'
 		})
+	},
+	async getAverageByProduct(productId: string | number) {
+		return instance<number>({
+			url: `${REVIEWS}/average-by-product`,
+			method: 'GET'
+		})
 	}
 }
