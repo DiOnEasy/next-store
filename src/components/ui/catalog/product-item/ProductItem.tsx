@@ -14,8 +14,8 @@ const ProductItem: FC<{product:IProduct}> = ({product}) =>{
             <AddToCartButton product={product} />
             <Image width={300} height={300} src={product.images[0]} alt={product.name}/>
         </div>
-        <p>{product.name}</p>
-        <p>{product.category.name}</p>
+        <p className="mb-1">{product.name}</p>
+        <p className="text-aqua mb-2">{product.category.name}</p>
         <ProductRating product={product} />
         <p>{product.price}</p>
         </>

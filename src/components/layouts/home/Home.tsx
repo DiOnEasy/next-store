@@ -6,7 +6,7 @@ const Home: FC<TypePaginationProducts> = ({products, length}) => {
     return (
         <>
         {/* {carousel} */}
-        <Catalog products={products || []}/>
+        <Catalog title="Products" products={products || []}/>
 
         </>
     )
