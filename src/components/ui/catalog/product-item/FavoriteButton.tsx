@@ -6,9 +6,7 @@ import { FC } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
-	
 	const { profile } = useProfile()
-
 
 	const queryClient = useQueryClient()
 
@@ -27,8 +25,9 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 
 	return (
 		<>
-			<button onClick={() => mutate()}></button>
-			{isExists ? <AiFillHeart /> : <AiOutlineHeart />}
+			<button className='block text-xl mb-1' onClick={() => mutate()}>
+				{isExists ? <AiFillHeart /> : <AiOutlineHeart />}
+			</button>
 		</>
 	)
 }

@@ -19,7 +19,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<>
-			<button
+			<button className='text-xl'
 				onClick={() =>
 					currentElement
 						? removeFromCart(currentElement.id)

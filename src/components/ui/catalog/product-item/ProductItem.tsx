@@ -8,17 +8,19 @@ import ProductRating from "./ProductRating";
 
 const ProductItem: FC<{product:IProduct}> = ({product}) =>{
     return(
-        <>
-        <div>
+        <div className="">
+        <div className="relative z-10">
+            <div className="absolute top-2 left-2 z-20">
             <FavoriteButton productId={product.id} />
             <AddToCartButton product={product} />
-            <Image width={300} height={300} src={product.images[0]} alt={product.name}/>
+            </div>
+            <Image className="relative rounded-2xl" width={300} height={300} src={product.images[0]} alt={product.name}/>
         </div>
         <p className="mb-1">{product.name}</p>
         <p className="text-aqua mb-2">{product.category.name}</p>
         <ProductRating product={product} />
-        <p>{product.price}</p>
-        </>
+        <p>{product.price}$</p>
+        </div>
     )
 }
 
