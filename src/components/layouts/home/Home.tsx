@@ -8,7 +8,7 @@ const Home: FC<TypePaginationProducts> = ({products, length}) => {
         <>
         {/* {carousel} */}
         <Layout>
-        < PaginationCatalog title="Products" products={products || []}/>
+        < PaginationCatalog title="Products" data={{products, length}}/>
         </Layout>
         </>
     )
