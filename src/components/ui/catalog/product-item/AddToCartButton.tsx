@@ -1,10 +1,11 @@
 import { useStore } from '@/hooks/useStore'
 import { IProduct } from '@/types/product.interface'
+import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 
 import { HiMiniShoppingCart, HiOutlineShoppingCart } from 'react-icons/hi2'
 
-const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
+const AddToCartButton: FC<{ product: IProduct }> = observer(({ product }) => {
 	const {
 		cartStore: {
 			addToCart,
@@ -19,7 +20,8 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<>
-			<button className='text-xl'
+			<button
+				className="text-3xl"
 				onClick={() =>
 					currentElement
 						? removeFromCart(currentElement.id)
@@ -30,11 +32,10 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 						  })
 				}
 			>
-                            {currentElement ? <HiMiniShoppingCart/> : <HiOutlineShoppingCart/>}
-
-            </button>
+				{currentElement ? <HiMiniShoppingCart /> : <HiOutlineShoppingCart />}
+			</button>
 		</>
 	)
-}
+})
 
 export default AddToCartButton

@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import {
-    IAddToCartPayload,
-    ICartinitialState,
-    IChangeQuantityPayload
+	IAddToCartPayload,
+	ICartinitialState,
+	IChangeQuantityPayload
 } from './cart.interface'
 
 class CartStore {
@@ -18,7 +18,6 @@ class CartStore {
 		const isExist = this.initialState.items.some(
 			item => item.product.id === data.product.id
 		)
-
 		if (!isExist) {
 			this.initialState.items.push({
 				...data,

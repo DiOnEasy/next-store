@@ -1,5 +1,5 @@
 import { TypePaginationProducts } from "@/types/product.interface"
-import Catalog from "@/ui/catalog/Catalog"
+import PaginationCatalog from "@/ui/catalog/PaginationCatalog"
 import Layout from "@/ui/layout/Layout"
 import { FC } from "react"
 
@@ -8,7 +8,7 @@ const Home: FC<TypePaginationProducts> = ({products, length}) => {
         <>
         {/* {carousel} */}
         <Layout>
-        <Catalog title="Products" products={products || []}/>
+        < PaginationCatalog title="Products" products={products || []}/>
         </Layout>
         </>
     )

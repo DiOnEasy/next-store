@@ -25,7 +25,7 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 
 	return (
 		<>
-			<button className='block text-xl mb-1' onClick={() => mutate()}>
+			<button className='block text-3xl mb-1 text-primary' onClick={() => mutate()}>
 				{isExists ? <AiFillHeart /> : <AiOutlineHeart />}
 			</button>
 		</>
