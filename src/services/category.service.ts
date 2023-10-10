@@ -5,11 +5,10 @@ const CATEGORIES = 'categories'
 
 export const CategoryService = {
 	async getAll() {
-		const {data} = await instance<ICategory[]>({
+		return instance<ICategory[]>({
 			url: CATEGORIES,
 			method: 'GET'
 		})
-		return data
 	},
 
 	async getById(id: string | number) {
