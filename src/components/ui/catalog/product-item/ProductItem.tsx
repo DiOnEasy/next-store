@@ -8,6 +8,9 @@ import FavoriteButton from './FavoriteButton'
 import ProductRating from './ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
+
+	console.log(product)
+
 	return (
 		<div className="">
 			<div className="relative z-10">

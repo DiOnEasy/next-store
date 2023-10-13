@@ -44,7 +44,7 @@ const Header: FC = () => {
 		
 				{user ? (
 					<div className='ml-auto px-3 w-1/2 flex items-center justify-around'>
-						<Link className='text-4xl text-white' href={'/'}>
+						<Link className='text-4xl text-white' href={'/favorites'}>
 							<AiOutlineHeart />
 						</Link>
 						<Cart />

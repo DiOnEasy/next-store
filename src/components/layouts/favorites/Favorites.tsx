@@ -1,9 +1,17 @@
-import Catalog from "@/ui/catalog/Catalog"
-import Layout from "@/ui/layout/Layout"
-import { FC } from "react"
+import { useProfile } from '@/hooks/useProfile'
+import Catalog from '@/ui/catalog/Catalog'
+import Layout from '@/ui/layout/Layout'
+import { FC } from 'react'
 
 const Favorites: FC = () => {
-return <Layout><Catalog products={products || []} title={category.name} /></Layout>
+
+const user = useProfile()
+console.log(user)
+	return (
+		<Layout>
+			<Catalog products={user.profile?.favorites || []} title="Your favorites products" />
+		</Layout>
+	)
 }
 
 export default Favorites
