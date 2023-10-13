@@ -2,6 +2,8 @@ import { IUser } from "@/types/user.interface"
 
  export interface IUserState {
     email: string
+    avatarPath: string
+    
  }
 
  export interface ITokens {
