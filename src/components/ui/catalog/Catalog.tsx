@@ -14,9 +14,9 @@ const Catalog: FC<ICatalog> = ({ products, isLoading, title }) => {
 	if (isLoading) return <Loader />
 
 	return (
-		<div className='ml-5'>
+		<div className='ml-5 pt-5'>
 			{title && <Heading>{title}</Heading>}
-			<div className='grid grid-cols-4 gap-x-10 gap-y-10'>
+			<div className='grid mt-5 grid-cols-4 gap-x-10 gap-y-10'>
 				{products.map(product => (
 					<ProductItem key={product.id} product={product} />
 				))}

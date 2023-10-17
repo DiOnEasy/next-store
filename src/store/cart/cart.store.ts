@@ -7,7 +7,8 @@ import {
 
 class CartStore {
 	initialState: ICartinitialState = {
-		items: []
+		items: [],
+		total: 0
 	}
 
 	constructor() {
@@ -43,6 +44,10 @@ class CartStore {
     reset = () => {
         this.initialState.items = []
     }
+
+	calcTotal = () => {
+		this.initialState.total = this.initialState.items?.reduce((acc, item) => acc + item.price * item.quantity,0)
+	}
 }
 
 export default new CartStore()

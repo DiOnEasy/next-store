@@ -9,12 +9,11 @@ import ProductRating from './ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 
-	console.log(product)
 
 	return (
 		<div className="">
 			<div className="relative z-10">
-				<div className="absolute top-2 left-2 z-20">
+				<div className="absolute bg-white/30 rounded-xl  p-0.5 top-2 left-2 z-20">
 					<FavoriteButton productId={product.id} />
 					<AddToCartButton product={product} />
 				</div>

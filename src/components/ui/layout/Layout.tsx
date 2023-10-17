@@ -4,12 +4,12 @@ import Sidebar from './sidebar/Sidebar'
 
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	return (
-		<div>
+		<div >
             <Header/>
 			<div
 				className="grid"
 				style={{
-					gridTemplateColumns: '1fr 4fr'
+					gridTemplateColumns: '1fr 4fr',
 				}}
 			>
 				<Sidebar />

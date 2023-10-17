@@ -33,9 +33,12 @@ const PaginationCatalog: FC<IPaginationCatalog> = ({ data, title }) => {
 
 	if (isLoading) return <Loader />
 	return (
-		<div className="ml-5">
+		<div className="ml-5" style={{ height: 'calc(100vh - 83.750px)', overflowY: 'scroll' }}>
+			<div className='flex justify-between mt-8 mb-3'>
 			{title && <Heading>{title}</Heading>}
 			<SortDropdown sortType={sortType} setSortType={setSortType} />
+			</div>
+			
 			<div className="grid grid-cols-4 gap-5 ">
 				{response.products.map(product => (
 					<ProductItem key={product.id} product={product} />
@@ -43,7 +46,7 @@ const PaginationCatalog: FC<IPaginationCatalog> = ({ data, title }) => {
 			</div>
 			<Button
 				onClick={() => setPerPage(perPage + 4)}
-				className=" hover:bg-secondary hover:text-white transition duration-300 ease-in-out m-auto block mt-10 px-10"
+				className=" hover:bg-secondary mb-8 hover:text-white transition duration-300 ease-in-out m-auto block mt-10 px-10"
 				variant="orange"
 			>
 				Load More

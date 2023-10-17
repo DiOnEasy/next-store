@@ -30,7 +30,7 @@ const Sidebar: FC = observer(() => {
 			{isLoading ? (
 				<Loader />
 			) : data ? (
-				<div className="h-screen bg-secondary pt-1 px-5 text-xl text-white">
+				<div style={{ height: 'calc(100vh - 83.750px)' }} className="h-screen bg-secondary pt-1 px-5 text-xl text-white">
 					<p className="text-2xl mb-3">Product categories:</p>
 					{items.map(item => (
 						<div className={cn('my-1', {

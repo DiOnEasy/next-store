@@ -1,28 +1,30 @@
 import { useStore } from '@/hooks/useStore'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
-import { AiOutlineHeart } from 'react-icons/ai'
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import Search from './Search'
 import Cart from './cart/Cart'
 
 const Header: FC = () => {
-    const [isClient, setIsClient] = useState(false);
+	const [isClient, setIsClient] = useState(false)
 
-    useEffect(() => {
-      setIsClient(true);
-    }, []);
-  
-    if (!isClient) {
-      return null; // Если рендерится на сервере, то возвращаем null
-    }
+	const { pathname } = useRouter()
+
+	useEffect(() => {
+		setIsClient(true)
+	}, [])
+
+	if (!isClient) {
+		return null // Если рендерится на сервере, то возвращаем null
+	}
 
 	const {
 		userStore: {
 			initialState: { user, isLoading }
 		}
 	} = useStore()
-
 
 	return (
 		<header
@@ -41,31 +43,28 @@ const Header: FC = () => {
 				/>
 			</Link>
 			<Search />
-		
-				{user ? (
-					<div className='ml-auto px-3 w-1/2 flex items-center justify-around'>
-						<Link className='text-4xl text-white' href={'/favorites'}>
-							<AiOutlineHeart />
-						</Link>
-						<Cart />
-						<Link href={'/'}>
-							<Image
-								className="rounded-3xl border border-primary"
-								width={40}
-								height={0}
-								src={user.avatarPath}
-								alt="Avatar"
-							/>
-						</Link>
-					</div>
-				) : (
-					<div></div>
-				)}
-			
+
+			{user ? (
+				<div className="ml-auto px-3 w-1/2 flex items-center justify-around">
+					<Link className="text-4xl text-white" href={'/favorites'}>
+						{pathname === '/favorites' ? <AiFillHeart /> : <AiOutlineHeart />}
+					</Link>
+					<Cart />
+					<Link href={'/'}>
+						<Image
+							className="rounded-3xl border border-primary"
+							width={40}
+							height={0}
+							src={user.avatarPath}
+							alt="Avatar"
+						/>
+					</Link>
+				</div>
+			) : (
+				<div></div>
+			)}
 		</header>
 	)
 }
-
-
 
 export default Header

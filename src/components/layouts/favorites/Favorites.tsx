@@ -6,7 +6,6 @@ import { FC } from 'react'
 const Favorites: FC = () => {
 
 const user = useProfile()
-console.log(user)
 	return (
 		<Layout>
 			<Catalog products={user.profile?.favorites || []} title="Your favorites products" />
