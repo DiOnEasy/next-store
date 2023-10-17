@@ -21,7 +21,7 @@ const SearchPage: NextPage = () => {
 		<div>
 			<Layout>
                 
-				<Catalog products={data?.products || []} title={`Showing ${data?.length} products for ${query.productName}`} />
+				<Catalog products={data?.products || []} title={data?.products.length ? `Showing ${data?.length} products for ${query.productName}` : 'Nothing was found for your request'} />
 			</Layout>
 		</div>
 	)

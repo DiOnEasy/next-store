@@ -37,7 +37,7 @@ const Sidebar: FC = observer(() => {
 							'text-primary' : asPath.split('/')[2] === item.slug,
 							'text-white' : asPath.split('/')[2] !== item.slug
 						})} key={item.id}>
-							<Link href={`/category/${item.slug}`}>{item.name}</Link>
+							<Link className='hover:text-primary' href={`/category/${item.slug}`}>{item.name}</Link>
 						</div>
 					))}
 				</div>
