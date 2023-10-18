@@ -42,6 +42,7 @@ class UserStore {
 
 	logout = () => {
 		logoutAction()
+		this.initialState.user = null
 	}
 
 	checkAuth = async () => {

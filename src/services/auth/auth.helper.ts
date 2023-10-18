@@ -19,6 +19,7 @@ export const removeFromStorage = () => {
 	Cookies.remove('accessToken')
 	Cookies.remove('refreshToken')
 	localStorage.removeItem('user')
+
 }
 
 export const saveToStorage = (data: IAuthResponse) => {

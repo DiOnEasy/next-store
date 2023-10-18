@@ -61,7 +61,11 @@ const Header: FC = () => {
 					</Link>
 				</div>
 			) : (
-				<div></div>
+				<div>
+					<Link href={'/auth'}>
+						Login
+					</Link>
+				</div>
 			)}
 		</header>
 	)

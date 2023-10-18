@@ -38,7 +38,7 @@ export const ProductService = {
 
 	async getById(productId: string | number) {
 		return instance<IProduct>({
-			url: `${PRODUCTS}//${productId}`,
+			url: `${PRODUCTS}/${productId}`,
 			method: 'GET'
 		})
 	},
