@@ -80,8 +80,8 @@ const Auth: FC = observer(() => {
 							<Button className="m-auto block px-10" variant="orange">
 								{type}
 							</Button>
-								<span>{type === 'login' ? 'Don`t have an account: ' : 'Do you have an account: '}</span>
-							<button type='button' className=' px-5 py-0.5 inline-block opacity-50 mt-5 '
+								<span className='text-lg'>{type === 'login' ? 'Don`t have an account: ' : 'Do you have an account: '}</span>
+							<button type='button' className='text-lg px-5 py-0.5 inline-block opacity-50 mt-5 '
 								onClick={() => setType(type === 'login' ? 'register' : 'login')}
 							>
 								{type === 'login' ? 'Register' : 'Login'}

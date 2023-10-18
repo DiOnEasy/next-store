@@ -41,9 +41,8 @@ const Product: FC<{ product: IProduct }> = observer(({ product }) => {
 			}
 		}
 	)
-	if (!profile) return null
 
-	const isExists = profile.favorites.some(
+	const isExists = profile?.favorites.some(
 		favorite => favorite.id === product.id
 	)
 
@@ -89,12 +88,13 @@ const Product: FC<{ product: IProduct }> = observer(({ product }) => {
 						>
 							{currentElement ? 'Remove from cart' : 'Add to cart'}
 						</button>
-						<button
+						{profile && <button
 							onClick={() => mutate()}
 							className="px-5 py-3 text-xl mr-5 mt-5 bg-red"
 						>
 							{isExists ? 'Remove from favorites' : 'Add to favorites'}
-						</button>
+						</button>}
+						
 						<div className="mt-7">
 							<p className="text-2xl font-medium mb-1">Product description:</p>
 							<p className="text-xl">{product.description}</p>
