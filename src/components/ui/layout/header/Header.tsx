@@ -10,23 +10,24 @@ import Cart from './cart/Cart'
 import { FiLogIn } from 'react-icons/fi'
 
 const Header: FC = () => {
-	const [isClient, setIsClient] = useState(false)
-
-	const { pathname } = useRouter()
-
 	useEffect(() => {
 		setIsClient(true)
 	}, [])
+	const [isClient, setIsClient] = useState(false)
 
-	if (!isClient) {
-		return null // Если рендерится на сервере, то возвращаем null
-	}
+	const { pathname } = useRouter()
 
 	const {
 		userStore: {
 			initialState: { user, isLoading }
 		}
 	} = useStore()
+
+	if (!isClient) {
+		return null // Если рендерится на сервере, то возвращаем null
+	}
+
+	
 
 	return (
 		<header

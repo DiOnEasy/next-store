@@ -1,8 +1,11 @@
 import { useStore } from '@/hooks/useStore'
+import { OrderService } from '@/services/order.service'
 import Button from '@/ui/button/Button'
 import { convertPrice } from '@/utils/convert-price'
+import { useMutation } from '@tanstack/react-query'
 import { observer } from 'mobx-react-lite'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import { BsTrash } from 'react-icons/bs'
 
@@ -24,6 +27,26 @@ const Cart: FC = observer(() => {
 		calcTotal()
 	}, [items.map(item => item.quantity)])
 
+	const router = useRouter()
+
+	const { mutate } = useMutation(
+		['create order and payment'],
+		() =>
+			OrderService.createOrder({
+				items: items.map(item => ({
+					price: item.price,
+					quantity: item.quantity,
+					productId: item.product.id
+				}))
+			}),
+		{
+			onSuccess({ data }) {
+				console.log(data.response)
+				router.push(data.response.checkout_url)
+			}
+		}
+	)
+
 	return (
 		<div className="">
 			<div
@@ -31,8 +54,13 @@ const Cart: FC = observer(() => {
 				className="text-3xl relative cursor-pointer hover:shadow-primary hover:shadow-md shadow-secondary shadow-inner bg-primary p-1.5 rounded-lg"
 			>
 				<HiOutlineShoppingCart />
-				<div className={' -top-1.5 flex items-center justify-center -right-2 text-xs font-bold bg-red rounded-sm w-4 h-4 text-center' + (items.length ? ' absolute' : ' hidden')}>
-				<span>{items.length}</span>
+				<div
+					className={
+						' -top-1.5 flex items-center justify-center -right-2 text-xs font-bold bg-red rounded-sm w-4 h-4 text-center' +
+						(items.length ? ' absolute' : ' hidden')
+					}
+				>
+					<span>{items.length}</span>
 				</div>
 			</div>
 			<div
@@ -105,12 +133,19 @@ const Cart: FC = observer(() => {
 						)}
 					</div>
 					<div>
-						<p className='text-xl text-right mt-5'>
-							Total price: <span className='text-2xl font-bold'>{convertPrice(total)}</span>
+						<p className="text-xl text-right mt-5">
+							Total price:{' '}
+							<span className="text-2xl font-bold">{convertPrice(total)}</span>
 						</p>
 					</div>
 					<div className="mt-5">
-						<Button className="m-auto block px-10" variant="orange">
+						<Button
+							onClick={() => {
+								mutate()
+							}}
+							className="m-auto block px-10"
+							variant="orange"
+						>
 							Order
 						</Button>
 					</div>

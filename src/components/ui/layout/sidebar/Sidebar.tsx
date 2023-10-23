@@ -1,13 +1,13 @@
+import { useProfile } from '@/hooks/useProfile'
 import { useStore } from '@/hooks/useStore'
 import { Loader } from '@/ui/Loader'
-import { data } from 'autoprefixer'
 import cn from 'clsx'
 import { observer } from 'mobx-react-lite'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
-
 import { FiLogOut } from 'react-icons/fi'
+
 
 const Sidebar: FC = observer(() => {
 	const router = useRouter()
@@ -21,9 +21,13 @@ const Sidebar: FC = observer(() => {
 		},
 		userStore: {
 			logout,
-			initialState: { user }
+			// initialState: { user }
 		}
 	} = useStore()
+
+	const user = useProfile()
+	console.log(user)
+
 	useEffect(() => {
 		const fetchCategories = async () => {
 			await getAllCategories()
@@ -34,12 +38,13 @@ const Sidebar: FC = observer(() => {
 	const handleLogout = () => {
 		router.reload()
 	}
+	
 
 	return (
 		<>
 			{isLoading ? (
 				<Loader />
-			) : data ? (
+			) : items ? (
 				<div
 					style={{ height: 'calc(100vh - 83.750px)' }}
 					className="flex flex-col h-screen bg-secondary pt-1 px-5 text-xl text-white"
@@ -61,7 +66,7 @@ const Sidebar: FC = observer(() => {
 							</Link>
 						</div>
 					))}
-					{user && (
+					{user.profile && (
 						<div className="mt-auto mb-10">
 							<button
 								onClick={() => {
