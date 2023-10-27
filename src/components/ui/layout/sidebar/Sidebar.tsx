@@ -67,7 +67,8 @@ const Sidebar: FC = observer(() => {
 						</div>
 					))}
 					{user.profile && (
-						<div className="mt-auto mb-10">
+					
+						<div className=" mb-10">
 							<button
 								onClick={() => {
 									logout()
@@ -78,6 +79,7 @@ const Sidebar: FC = observer(() => {
 								Logout <FiLogOut />
 							</button>
 						</div>
+						
 					)}
 				</div>
 			) : (

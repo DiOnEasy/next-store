@@ -47,11 +47,14 @@ const Header: FC = () => {
 			</Link>
 			<Search />
 
-			<div className="ml-auto px-3 w-1/2 flex items-center justify-around">
+			<div className="ml-auto px-3 w-4/5 flex items-center justify-around">
 				{user && (
+					<>
+					<Link className='text-white text-2xl' href={'/orders'}>My orders</Link>
 					<Link className="text-4xl text-white" href={'/favorites'}>
 						{pathname === '/favorites' ? <AiFillHeart /> : <AiOutlineHeart />}
 					</Link>
+					</>
 				)}
 				<Cart />
 				{user ? (
